@@ -258,9 +258,9 @@ function generateMemoryPrompt(messages, isUpdate = false) {
 
     return `${instruction}
 
-Characters in this conversation (excluding {{user}} who is the player): ${characterList}
+Characters in this conversation{{// (excluding <user> who is the player)}}: ${characterList}
 
-NOTE: In the conversation below, messages are marked with [PLAYER] for {{user}} messages and [CHARACTER] for NPC messages.
+NOTE: In the conversation below, messages are marked with [PLAYER] for Director{{// <user>}} messages (Human who provides emotional direction for <user>) and [CHARACTER] for AI messages.
 
 Here is the conversation to create memories from:
 <conversation>
@@ -292,14 +292,17 @@ Examples:
 
 IMPORTANT:
 - Only create entries for significant moments worth remembering.
-- Keep memories concise (1-2 sentences maximum).
+- Keep memories concise (3-5 sentences maximum).
 - Use third person perspective: "{name} remembers..."
 - Choose 3 specific, relevant keywords per entry.
-- ONLY assign memories to CHARACTERS (NPCs) - NEVER include {{user}} in the "characters" array.
-- {{user}} is the player, not a character, so they should NEVER be in the characters list.
+{{//
+- ONLY assign memories to CHARACTERS (NPCs) - NEVER include <user> in the "characters" array.
+- <user> is the player, not a character, so they should NEVER be in the characters list.
+}}{{trim}}
 - Only characters who were ACTUALLY PRESENT in that specific scene/moment should remember it.
 - If multiple characters share the memory, list all of them in the "characters" array.
 - If known, include details such as dates, locations, and other relevant context in the memories.
+- If it is an OOC message that contains more info about the world the story is set in, it should be included in the memory as well. Frame it as the world's reality instead of <bot> speaking with <user>.
 
 Return ONLY a JSON array of memory objects, nothing else:`;
 }
