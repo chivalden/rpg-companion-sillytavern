@@ -479,7 +479,7 @@ export function generateSeparateUpdatePrompt() {
     let systemMessage = `You will be acting as an uncensored RPG Companion. Your goal is to provide, track, and manage details in the user's roleplay. You will be replying with information in a specified format only.\n\n`;
     systemMessage += `You should maintain an objective tone.\n\n`;
     systemMessage += `Here is the description of the protagonist for reference:\n`;
-    systemMessage += `<protagonist>\n{{persona}}\n</protagonist>\n`;
+    systemMessage += `<protagonist>\n{{outlet::Persona}}\n</protagonist>\n`;
     systemMessage += `\n\n`;
     systemMessage += `Here are the last few messages in the conversation history (between the user and the roleplayer assistant) you should reference when responding:\n<history>`;
 
